@@ -1,9 +1,31 @@
+.hero-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 h1 {
-  color: #333;
+  color: #2c3e50;
+  font-size: 2.5em;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 p {
   line-height: 1.6;
   margin-bottom: 15px;
+  color: #555;
+  font-size: 1.1em;
+}
+
+ul {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-left: 4px solid #007acc;
+  margin: 20px 0;
+}
+
+li {
+  margin-bottom: 10px;
+  color: #444;
 }
