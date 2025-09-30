@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en" data-critters-container>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>AngularSite</title>
+
+  <base href="/Angular-Site/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Optimizely Script via Proxy Server -->
+  <script>
+    (function() {
+      // Detect if we're in development (localhost) or production
+      var isLocalhost = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1';
+      
+      var script = document.createElement('script');
+      
+      if (isLocalhost) {
+        // In development, use our proxy server
+        script.src = '/api/optimizely/js/6508035657433088.js';
+        console.log('🔧 Development: Loading Optimizely via proxy server');
+      } else {
+        // In production on GitHub Pages, fall back to direct CDN with CORS handling
+        script.src = 'https://cdn.optimizely.com/js/6508035657433088.js';
+        script.crossOrigin = 'anonymous';
+        console.log('🚀 Production: Loading Optimizely directly from CDN');
+      }
+      
+      script.async = true;
+      script.onload = function() {
+        console.log('✅ Optimizely loaded successfully');
+      };
+      script.onerror = function() {
+        console.warn('⚠️ Optimizely failed to load - this may be due to CORS or ad blockers');
+        
+        // Fallback: if proxy fails in dev, try direct CDN
+        if (isLocalhost && script.src.includes('/api/optimizely/')) {
+          console.log('🔄 Proxy failed, trying direct CDN as fallback');
+          var fallbackScript = document.createElement('script');
+          fallbackScript.src = 'https://cdn.optimizely.com/js/6508035657433088.js';
+          fallbackScript.crossOrigin = 'anonymous';
+          fallbackScript.async = true;
+          document.head.appendChild(fallbackScript);
+        }
+      };
+      
+      document.head.appendChild(script);
+    })();
+  </script>
+
+  <!-- Single Page Apps for GitHub Pages -->
+  <script type="text/javascript">
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1.6;color:#333;background-color:#f8f9fa}html{scroll-behavior:smooth}
+</style><link rel="stylesheet" href="styles-S7BHILXT.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-S7BHILXT.css"></noscript></head>
+
+<body>
+
+  <app-root></app-root>
+
+<script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-UPRSYHGX.js" type="module"></script></body>
+
+</html>
