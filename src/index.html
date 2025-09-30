@@ -12,7 +12,19 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="https://cdn.optimizely.com/js/6508035657433088.js"></script>
+  <!-- Optimizely Script with CORS handling -->
+  <script>
+    (function() {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.optimizely.com/js/6508035657433088.js';
+      script.crossOrigin = 'anonymous';
+      script.async = true;
+      script.onerror = function() {
+        console.warn('Optimizely failed to load - this may be due to CORS or ad blockers');
+      };
+      document.head.appendChild(script);
+    })();
+  </script>
 
   <!-- Single Page Apps for GitHub Pages -->
   <script type="text/javascript">

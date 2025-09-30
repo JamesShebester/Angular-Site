@@ -1,0 +1,4 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.optimizely.com; connect-src 'self' https://*.optimizely.com; img-src 'self' data: https://*.optimizely.com
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
