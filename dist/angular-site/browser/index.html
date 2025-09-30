@@ -12,16 +12,44 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Optimizely Script with CORS handling -->
+  <!-- Optimizely Script via Proxy Server -->
   <script>
     (function() {
+      // Detect if we're in development (localhost) or production
+      var isLocalhost = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1';
+      
       var script = document.createElement('script');
-      script.src = 'https://cdn.optimizely.com/js/6508035657433088.js';
-      script.crossOrigin = 'anonymous';
+      
+      if (isLocalhost) {
+        // In development, use our proxy server
+        script.src = '/api/optimizely/js/6508035657433088.js';
+        console.log('🔧 Development: Loading Optimizely via proxy server');
+      } else {
+        // In production on GitHub Pages, fall back to direct CDN with CORS handling
+        script.src = 'https://cdn.optimizely.com/js/6508035657433088.js';
+        script.crossOrigin = 'anonymous';
+        console.log('🚀 Production: Loading Optimizely directly from CDN');
+      }
+      
       script.async = true;
-      script.onerror = function() {
-        console.warn('Optimizely failed to load - this may be due to CORS or ad blockers');
+      script.onload = function() {
+        console.log('✅ Optimizely loaded successfully');
       };
+      script.onerror = function() {
+        console.warn('⚠️ Optimizely failed to load - this may be due to CORS or ad blockers');
+        
+        // Fallback: if proxy fails in dev, try direct CDN
+        if (isLocalhost && script.src.includes('/api/optimizely/')) {
+          console.log('🔄 Proxy failed, trying direct CDN as fallback');
+          var fallbackScript = document.createElement('script');
+          fallbackScript.src = 'https://cdn.optimizely.com/js/6508035657433088.js';
+          fallbackScript.crossOrigin = 'anonymous';
+          fallbackScript.async = true;
+          document.head.appendChild(fallbackScript);
+        }
+      };
+      
       document.head.appendChild(script);
     })();
   </script>
